@@ -1,216 +1,50 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+ 
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html, body, #root {
+  height: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* Ensure the page uses the dark background */
 body {
   margin: 0;
-  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: #000;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #0f1723;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Reusing the accent color from the header */
-:root {
-  --accent-cyan: #00f0d0;
-  --header-height: 80px; /* Used for calculating hero height */
-}
-
-/* Hero Section Layout (Flexbox for two columns) */
-.hero-section {
-  background-color: #000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 80px 40px;
-  /* Make it fill the remaining viewport height */
-  min-height: calc(100vh - var(--header-height)); 
-}
-
-/* Left Side Content */
-.hero-content {
-  flex: 1;
-  max-width: 55%; /* Keep the text contained */
-}
-
-.hero-title {
-  text-align: start;
-  font-size: 3.9rem; /* Large headline */
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.addictive-word {
-  color: var(--accent-cyan);
-}
-
-.hero-description {
-  text-align: start;
-  font-size: 1.2rem;
-  color: #a0a0a0;
-  margin-bottom: 40px;
-  line-height: 1.5;
-}
-
-/* CTA Button */
-.cta-button {
-  background-color: var(--accent-cyan);
-  color: #000;
-  padding: 16px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
+ 
+main {
+  min-height: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  transition: background-color 0.2s;
-  margin-bottom: 40px;
+  justify-content: center;
+  
+  padding: 7em;
 }
 
-.cta-button:hover {
-  background-color: #00dbbe;
-}
-
-.arrow-icon {
-  font-size: 1.2rem;
-  font-weight: 900;
-}
-
-/* Social Proof (12.4k people) */
-.social-proof {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.avatar-stack {
-  display: flex;
-}
-
-.avatar-stack img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-  border: 1px solid #474646; /* Use black border to separate on black background */
-  margin-left: -10px; /* Overlap the images */
-}
-
-.avatar-stack img:first-child {
-  margin-left: 0;
-}
-
-.signup-count {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-
-/* Right Side Visual/Mascot */
-.hero-visual {
-  flex: 1;
-  max-width: 45%;
-  display: flex;
-  justify-content: flex-end; /* Push mascot to the right */
-}
-
-.mascot-img {
+ 
+img, picture, video {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Mobile Responsiveness (Stacks content vertically) */
-@media (max-width: 1024px) {
-  .hero-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 60px 20px;
-  }
-  
-  .hero-content, .hero-visual {
-    max-width: 100%;
-    margin-bottom: 40px;
-  }
-
-  .hero-title {
-    font-size: 3rem;
-  }
-
-  .hero-visual {
-    justify-content: center;
-  }
+ 
+:focus {
+  outline: 3px solid rgba(11, 118, 239, 0.18);
+  outline-offset: 3px;
 }
 
-@media (max-width: 600px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  
-  /* Center the CTA and social proof for better mobile appearance */
-  .cta-button, .social-proof {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .social-proof {
-    justify-content: center;
-  }
-}
-
-/* Add this to src/App.css */
-
-.current-persona-display {
-  font-size: 1.1rem;
-  color: #fff;
-  background-color: #1a1a1a;
-  padding: 10px 15px;
-  border-left: 5px solid var(--accent-cyan);
-  border-radius: 4px;
-  margin-bottom: 40px;
+ 
+.u-hidden {
+  display: none !important;
 }
