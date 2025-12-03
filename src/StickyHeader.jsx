@@ -2,67 +2,63 @@ import React, { useState } from 'react';
 import './StickyHeader.css';
 
 // Import the logo if you are using it (keep this line)
-// Place your logo at: src/components/assets/logo.png
-import trailLogo from './assets/logo.png';
+import trailLogo from './assets/logo.png'; 
 
+// Receive selectedPersona and the handler function (onPersonaSelect) as props
 const StickyHeader = ({ selectedPersona, onPersonaSelect }) => {
+  // Removed internal state for selectedPersona and useEffect for localStorage
+  
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Use the prop function to update the parent state
   const handlePersonaSelect = (persona) => {
     onPersonaSelect(persona); // Calls the function passed from App.jsx
-    setIsDropdownOpen(false);
-    setIsMobileMenuOpen(false);
+    setIsDropdownOpen(false); 
   };
 
   const personas = ['Player', 'Creator', 'Enterprise'];
 
   return (
-    <header className="sticky-header" role="banner">
+    <header className="sticky-header">
       <div className="header-container">
-        {/* Logo Area */}
+        
+        {/* Logo Area (unchanged) */}
         <div className="logo-section">
-          <a href="#home" className="logo-link">
-            <img src={trailLogo} alt="TRAIL Logo" className="logo-img" />
-          </a>
+            <a href="#home"> 
+                <img src={trailLogo} alt="TRAIL Logo" className="logo-img" />
+            </a>
         </div>
 
-        <button
-          className="mobile-toggle"
-          aria-expanded={isMobileMenuOpen}
-          aria-label="Toggle navigation"
+        <button 
+          className="mobile-toggle" 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? '✕' : '☰'}
         </button>
 
         <div className={`nav-actions-wrapper ${isMobileMenuOpen ? 'open' : ''}`}>
-          <nav className="nav-links" aria-label="Main navigation">
+          
+          <nav className="nav-links">
             <a href="#home" className="nav-item">Home</a>
             <a href="#how-it-works" className="nav-item">How It Works</a>
-
+            
             {/* Persona Dropdown */}
-            <div
+            <div 
               className="dropdown-container"
               onMouseEnter={() => setIsDropdownOpen(true)}
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
-              <button
-                className="nav-item dropdown-trigger"
-                onClick={() => setIsDropdownOpen((v) => !v)}
-                aria-haspopup="true"
-                aria-expanded={isDropdownOpen}
-              >
+              <button className="nav-item dropdown-trigger">
+                {/* Display the persona state received from the parent */}
                 Personas ({selectedPersona}) <span className="arrow">▼</span>
               </button>
-
+              
               {isDropdownOpen && (
-                <ul className="dropdown-menu" role="menu">
+                <ul className="dropdown-menu">
                   {personas.map((persona) => (
-                    <li
-                      key={persona}
-                      role="menuitem"
+                    <li 
+                      key={persona} 
                       onClick={() => handlePersonaSelect(persona)}
                       className={selectedPersona === persona ? 'active' : ''}
                     >

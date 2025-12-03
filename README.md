@@ -1,21 +1,16 @@
-# React Hook Form + Zod Example
+# React + Vite
 
-Minimal example demonstrating:
-- React Hook Form for form state
-- Zod for validation
-- Plain CSS responsive styling
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Fields:
-- Name (required)
-- Email (required, must be valid)
-- Telegram handle (optional)
-- Persona dropdown (Player, Creator, Enterprise — required)
+Currently, two official plugins are available:
 
-Install and run (using npm + Vite):
-1. npm install
-2. npm run dev
-3. Open the URL printed by Vite (usually http://localhost:5173)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Notes:
-- Validation errors display a red border and a red message under the input.
-- This is TypeScript-ready. Adapt to plain JS by removing types and tsconfig as needed.
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
