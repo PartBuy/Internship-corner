@@ -1,0 +1,265 @@
+:root {
+  /* Light theme tokens */
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --text: #0f1724;
+  --subtle: #e6e9ee;
+  --accent: #2563eb;
+  --accent-600: #1e4fcf;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 16px;
+  --shadow-1: 0 8px 36px rgba(16,24,40,0.06);
+  --max-width: 1200px; /* overall app max width */
+  --input-bg: #ffffff;
+  --input-border: #6c7b94;
+  --placeholder: #9ca3af;
+  --control-height: 56px;
+  --focus-ring: rgba(37,99,235,0.12);
+  --transition: 180ms ease;
+  --form-gap: 24px;
+  --page-padding: 48px;
+
+ 
+  --form-max-width: 760px;  
+  --form-vw: 62vw;          
+}
+
+/* Dark theme override */
+:root[data-theme="dark"] {
+  --bg: linear-gradient(180deg,#0b1220 0%, #071025 100%);
+  --surface: rgba(9,12,18,0.72);
+  --muted: #94a3b8;
+  --text: #e6eef8;
+  --subtle: rgba(255,255,255,0.04);
+  --accent: #4f9aff;
+  --accent-600: #2d7bff;
+  --danger: #ff6b6b;
+  --glass: rgba(255,255,255,0.02);
+  --radius: 16px;
+  --shadow-1: 0 12px 40px rgba(2,6,23,0.6);
+  --max-width: 1200px;
+  --input-bg: rgba(255,255,255,0.02);
+  --input-border: rgba(255,255,255,0.06);
+  --placeholder: #8b98a8;
+  --control-height: 56px;
+  --focus-ring: rgba(79,154,255,0.14);
+  --transition: 180ms ease;
+  --form-gap: 24px;
+  --page-padding: 48px;
+
+  /* Same constraints for dark theme */
+  --form-max-width: 760px;
+  --form-vw: 62vw;
+}
+
+/* Global reset and layout */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  padding: var(--page-padding);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* App container */
+.app {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  margin-bottom: 22px;
+  max-width: var(--form-max-width);  
+}
+.header-left {
+  text-align: center;
+  width: 100%;
+}
+.header-left h1 {
+  margin: 0 0 6px;
+  font-size: 3rem;
+  color: #4468c4;
+  letter-spacing: -0.01em;
+}
+.muted { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+/* Theme toggle */
+.header-actions {
+  display:flex;
+  align-items:center;
+}
+.theme-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  height:40px;
+  width:48px;
+  padding:6px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  border: 1px solid var(--subtle);
+  color: var(--muted);
+  cursor:pointer;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-1);
+}
+.theme-toggle:hover{
+  transform: translateY(-2px);
+  color: var(--text);
+}
+.theme-toggle svg { display:block; }
+.theme-toggle:focus { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+ 
+.form {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
+  border-radius: var(--radius);
+  padding: 36px;
+  box-shadow: var(--shadow-1);
+  border: 1px solid #00000048;
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  width: min(var(--form-vw), var(--form-max-width));
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* In dark theme we use a subtle glass surface */
+:root[data-theme="dark"] .form {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Grid layout: single column so each input is full width */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;  
+  gap: var(--form-gap);
+}
+
+/* Row */
+.form-row { display: flex; flex-direction: column; min-width:0; }
+.form-row label {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+/* Controls */
+.input,
+select {
+  height: var(--control-height);
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 1.02rem;
+  transition: box-shadow var(--transition), border-color var(--transition), background var(--transition);
+  outline: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  letter-spacing: -0.01em;
+}
+.input::placeholder { color: var(--placeholder); opacity: 1; }
+.input:focus, select:focus {
+  border-color: var(--accent-600);
+  box-shadow: 0 12px 32px var(--focus-ring);
+}
+
+/* Select caret spacing */
+.form-row select { padding-right: 44px; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 14px) calc(1em + 2px); background-size: 7px 7px, 7px 7px; background-repeat: no-repeat; }
+
+/* Error state */
+.input--error, select.input--error {
+  border-color: var(--danger);
+  box-shadow: 0 10px 28px rgba(239,68,68,0.08);
+}
+.error-text {
+  color: var(--danger);
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+/* Small hint / required */
+.form-row .required { color: var(--danger); margin-left: 6px; font-weight:800; font-size:0.98rem; }
+
+/* Actions */
+.form-actions {
+  display:flex;
+  gap:14px;
+  justify-content:flex-end;
+  margin-top:24px;
+  flex-wrap:wrap;
+}
+.btn {
+  background: linear-gradient(180deg,var(--accent),var(--accent-600));
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-weight: 800;
+  cursor: pointer;
+  min-width: 140px;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+  box-shadow: 0 12px 30px rgba(37,99,235,0.18);
+}
+.btn:active { transform: translateY(1px) scale(0.998); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform:none; box-shadow:none; }
+
+.btn--muted {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--subtle);
+  min-width: 96px;
+  font-weight: 700;
+}
+
+/* Footer */
+.app-footer { text-align: center; margin-top: 20px; color: var(--muted); font-size: 0.96rem; }
+
+/* Utility for screen-reader only text */
+.sr-only { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  :root { --form-vw: 86vw; }  
+  .form { padding: 32px; }
+  .app-header { max-width: calc(var(--form-vw)); }
+}
+@media (max-width: 720px) {
+  :root { --control-height: 52px; --page-padding: 28px; --form-vw: 94vw; }
+  .form { padding: 24px; }
+  .header-left h1 { font-size: 1.12rem; }
+  .muted { font-size: 0.95rem; }
+}
+@media (max-width: 420px) {
+  .form { padding: 18px; }
+  :root { --control-height: 48px; --page-padding: 20px; --form-vw: 96vw; }
+}
+
+/* Make error text and input animation subtle */
+.error-text, .input--error { transition: border-color 140ms ease, box-shadow 140ms ease, color 140ms ease; }
