@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import './StickyHeader.css';
-
-// Import the logo if you are using it (keep this line)
-// Place your logo at: src/components/assets/logo.png
+import './Header.css';
 import trailLogo from './assets/logo.png';
 
-const StickyHeader = ({ selectedPersona, onPersonaSelect }) => {
+ 
+const Header = ({ selectedPersona, onPersonaSelect }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Use the prop function to update the parent state
+ 
   const handlePersonaSelect = (persona) => {
-    onPersonaSelect(persona); // Calls the function passed from App.jsx
+    onPersonaSelect(persona);  
     setIsDropdownOpen(false);
     setIsMobileMenuOpen(false);
   };
@@ -19,20 +17,20 @@ const StickyHeader = ({ selectedPersona, onPersonaSelect }) => {
   const personas = ['Player', 'Creator', 'Enterprise'];
 
   return (
-    <header className="sticky-header" role="banner">
+    <header className="site-header">
       <div className="header-container">
-        {/* Logo Area */}
+       
         <div className="logo-section">
-          <a href="#home" className="logo-link">
+          <a href="#home">
             <img src={trailLogo} alt="TRAIL Logo" className="logo-img" />
           </a>
         </div>
 
         <button
           className="mobile-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
           aria-label="Toggle navigation"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? '✕' : '☰'}
         </button>
@@ -50,9 +48,9 @@ const StickyHeader = ({ selectedPersona, onPersonaSelect }) => {
             >
               <button
                 className="nav-item dropdown-trigger"
-                onClick={() => setIsDropdownOpen((v) => !v)}
-                aria-haspopup="true"
+                aria-haspopup="menu"
                 aria-expanded={isDropdownOpen}
+                type="button"
               >
                 Personas ({selectedPersona}) <span className="arrow">▼</span>
               </button>
@@ -62,9 +60,13 @@ const StickyHeader = ({ selectedPersona, onPersonaSelect }) => {
                   {personas.map((persona) => (
                     <li
                       key={persona}
-                      role="menuitem"
                       onClick={() => handlePersonaSelect(persona)}
                       className={selectedPersona === persona ? 'active' : ''}
+                      role="menuitem"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') handlePersonaSelect(persona);
+                      }}
                     >
                       {persona}
                     </li>
@@ -85,4 +87,4 @@ const StickyHeader = ({ selectedPersona, onPersonaSelect }) => {
   );
 };
 
-export default StickyHeader;
+export default Header;

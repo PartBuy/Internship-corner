@@ -1,42 +1,33 @@
 import React, { useState } from "react";
-import StickyHeader from "./StickyHeader";
-import MetricsStrip from "./MetricsStrip";
+import Header from "./Header";
+import HeroSection from "./HeroSection";
 import "./App.css";
-import placeholderImg from "./assets/placeholder.png"; // add this image file
+ 
+ 
 
-export default function App() {
+function App() {
   const [selectedPersona, setSelectedPersona] = useState("Player");
 
-  const stats = [
-    { value: 110000, label: "Beta" },
-    { value: 75840, label: "Beta" },
-    { value: 4200, label: "Beta" },
-  ];
+  const handlePersonaSelect = (persona) => {
+    setSelectedPersona(persona);
+    
+  };
 
   return (
-    <>
-      <StickyHeader selectedPersona={selectedPersona} onPersonaSelect={setSelectedPersona} />
+    <div>
+      <Header selectedPersona={selectedPersona} onPersonaSelect={handlePersonaSelect} />
 
-      <div className="app">
-        <main className="container" role="main">
-          <header className="heading">
-            <h1 className="brand-title">MetricsStrip — cleaner UI</h1>
-            <p className="lead">Large, readable metrics that animate when scrolled into view.</p>
-            <p className="lead persona">Selected persona: <strong>{selectedPersona}</strong></p>
-          </header>
-
-          {/* Centered body card with image */}
-          <section className="center-body">
-            <div className="hero-card">
-              <img src={placeholderImg} alt="Placeholder" className="hero-image" />
-            
-            </div>
-
-            {/* Metrics row below the hero card */}
-            <MetricsStrip stats={stats} duration={1400} />
-          </section>
-        </main>
-      </div>
-    </>
+      <main>
+        <HeroSection
+          title="Build faster with clean components"
+          subtitle="A minimal hero built with React and plain CSS. Responsive by default and ready to drop into your project."
+          ctaText="Start Free"
+          gifSrc="https://via.placeholder.com/640x360.gif?text=Preview"
+          videoFallback="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+        />
+      </main>
+    </div>
   );
 }
+
+export default App;
